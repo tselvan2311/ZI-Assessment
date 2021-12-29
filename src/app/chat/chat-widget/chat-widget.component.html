@@ -1,0 +1,48 @@
+<div class="button-container">
+  <button 
+    cdkOverlayOrigin #trigger="cdkOverlayOrigin"
+    mat-fab color="primary"
+    aria-label="Chat with support people"
+    (click)="open = !open"
+    >
+    <span class="material-icons">
+      chat
+    </span>
+  </button>
+</div>
+
+
+
+<ng-template 
+cdkConnectedOverlay
+[cdkConnectedOverlayOrigin]="trigger"
+[cdkConnectedOverlayOpen]="open"
+[cdkConnectedOverlayMinWidth]="300"
+[cdkConnectedOverlayMinHeight]="400"
+[cdkConnectedOverlayWidth]="300"
+[cdkConnectedOverlayHeight]="400"
+>
+  <mat-card class="chat-window" *ngIf="channelInfo">
+    <mat-card-header class="header" [style.background-color]="settings?.color?.headerBackgroundColor">
+      <div mat-card-avatar class="header-image" [style.background-image]="settings?.bot?.img"></div>
+      <mat-card-title [style.color]="settings?.color?.headerTextColor">{{settings?.bot?.company}}</mat-card-title>
+      <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+    </mat-card-header>
+    <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+    <mat-card-content >
+      <!-- [style.background-color]="settings?.color?.chatBackgroundColor" -->
+      <div [style.color]="settings?.color?.chatTextColor">
+        <!-- [messages]="channelInfo.prevMessages || null"-->
+        <app-chat-messages [messages]="channelInfo.prevMessages || null"></app-chat-messages>
+      </div>
+    </mat-card-content>
+    <mat-card-footer>
+      <mat-form-field class="chat-text-input" appearance="standard">
+        <input matInput placeholder="Enter text here." [(ngModel)]="textMessage">
+        <button *ngIf="textMessage" matSuffix mat-icon-button aria-label="Clear" (click)="sendMessage()">
+          <mat-icon>send</mat-icon>
+        </button>
+      </mat-form-field>
+    </mat-card-footer>
+  </mat-card>
+</ng-template>

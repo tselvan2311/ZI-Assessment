@@ -1,0 +1,20 @@
+<div class="messages-container" *ngIf="messages">
+  <div class="scroller">
+    <div class="message-item" *ngFor="let message of messages">
+      <div
+        [ngClass]="
+          { 
+            'message':  message?.text,
+            'event': message?.event,
+            'new-session': message?.newSession,
+            'sender': message?.provider === 'bot' || message?.provider === 'app'
+          }
+        " 
+        >
+        <span *ngIf="message?.text">{{message?.text}}</span>
+        <span *ngIf="message?.event">{{message?.event}}</span>
+        <span *ngIf="message?.newSession">{{getDateFromUnixTimeStamp(message?.time) | amCalendar }}</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+.chat-window {
+  width: 100%;
+  box-shadow: 0 0 50px #ccc;;
+  border-radius: 10px;
+  padding: 0px;
+  .header {
+    border-radius: 10px 10px 0px 0px;
+  }
+  mat-card-title {
+    margin-top: 12px;
+  }
+  mat-card-content {
+    // max-height: 280px; 
+    height: 280px;
+    overflow: auto;
+  }
+
+  mat-card-footer {
+    border-top: 1px solid #ccc;
+    height: 80px;
+    margin: 0px;
+    padding: 0px 10px;
+    .chat-text-input {
+      width: 100%;
+    }
+  }
+
+}

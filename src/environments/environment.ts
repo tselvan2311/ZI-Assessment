@@ -3,7 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  pusher: {
+    key: 'PUSHER_API_KEY',
+    cluster: 'PUSHER_CLUSTER',
+  },
+  url: 'insent-recruitment.web.app/',
+  baseUrl: 'https://insentrecruit.api.insent.ai/',
 };
 
 /*
